@@ -1,2 +1,5 @@
 venv/
 .env
+*.pyc
+.vscode/
+db.sqlite3
