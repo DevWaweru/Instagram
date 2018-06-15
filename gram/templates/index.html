@@ -1,1 +1,6 @@
 <h1>Instagram Clone</h1>
+{% if user.is_authenticated %}
+<h2>You have been logged in {{user|title}} </h2>
+{% else %}
+<h2>You have been logged out</h2>
+{% endif %}
