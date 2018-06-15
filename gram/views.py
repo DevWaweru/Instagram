@@ -10,6 +10,7 @@ from django.contrib.auth.decorators import login_required
 from .forms import SignupForm
 from .emails import send_activation_email
 from .tokens import account_activation_token
+from .models import Image, Profile
 
 # Create your views here.
 @login_required(login_url='/')
@@ -49,3 +50,12 @@ def activate(request, uidb64, token):
         return HttpResponse('Thank you for confirming email. Now login to your account')
     else:
         return HttpResponse('Activation link is invalid')
+    
+def profile(request, username):
+    profile = User.objects.get(username=username)
+    print(profile.id)
+    profile_details = Profile.get_by_id(2)
+    images = Image.get_profile_images(profile.id)
+    title = f'@{profile.username} Instagram photos and videos'
+
+    return render(request, 'profile/profile.html', {'title':title, 'profile':profile, 'profile_details':profile_details, 'images':images})

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-5">
+                    {% if profile_details.profile_photo %}
+                    <img src="{{profile_details.profile_photo.url}}" alt="profile-photo">
+                    {% else %}
+                    <img src="/static/img/avatah.png" alt="avatar">
+                    {% endif %}
+                </div>
+                <div class="col-md-7">
+                    <p>{{ profile.username }}'s profile</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

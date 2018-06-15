@@ -6,14 +6,19 @@ from tinymce.models import HTMLField
 class Profile(models.Model):
     profile_photo = models.ImageField(upload_to = 'profilepics/', default='Image')
     bio = HTMLField()
-    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    user = models.OneToOneField(User,on_delete=models.CASCADE)
 
     def save_profile(self):
         self.save()
     
     @classmethod
-    def find_profile(cls, name):
+    def search_profile(cls, name):
         profile = Profile.objects.filter(user__icontains = name)
+        return profile
+    
+    @classmethod
+    def get_by_id(cls, id):
+        profile = Profile.objects.filter(pk = id)
         return profile
 
 class Image(models.Model):
@@ -36,7 +41,7 @@ class Image(models.Model):
         return image
     
     @classmethod
-    def get_images_followers(cls, profile):
+    def get_profile_images(cls, profile):
         images = Image.objects.filter(profile__pk = profile)
         return images
     
