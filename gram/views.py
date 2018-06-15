@@ -6,29 +6,33 @@ from django.utils.encoding import force_bytes, force_text
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.template.loader import render_to_string
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 from .forms import SignupForm
 from .emails import send_activation_email
 from .tokens import account_activation_token
 
 # Create your views here.
+@login_required(login_url='/')
 def home(request):
-
     return render(request, 'index.html')
 
 def signup(request):
-    if request.method == 'POST':
-        form = SignupForm(request.POST)
-        if form.is_valid():
-            user = form.save(commit=False)
-            user.is_active = False
-            user.save()
-            current_site = get_current_site(request)
-            to_email = form.cleaned_data.get('email')
-            send_activation_email(user, current_site, to_email)
-            return HttpResponse('Confirm your email address to complete registration')
+    if request.user.is_authenticated():
+        return redirect('home')
     else:
-        form = SignupForm()
-        return render(request, 'registration/signup.html',{'form':form})
+        if request.method == 'POST':
+            form = SignupForm(request.POST)
+            if form.is_valid():
+                user = form.save(commit=False)
+                user.is_active = False
+                user.save()
+                current_site = get_current_site(request)
+                to_email = form.cleaned_data.get('email')
+                send_activation_email(user, current_site, to_email)
+                return HttpResponse('Confirm your email address to complete registration')
+        else:
+            form = SignupForm()
+            return render(request, 'registration/signup.html',{'form':form})
 
 def activate(request, uidb64, token):
     try:

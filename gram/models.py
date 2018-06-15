@@ -8,9 +8,42 @@ class Profile(models.Model):
     bio = HTMLField()
     user = models.ForeignKey(User,on_delete=models.CASCADE)
 
+    def save_profile(self):
+        self.save()
+    
+    @classmethod
+    def find_profile(cls, name):
+        profile = Profile.objects.filter(user__icontains = name)
+        return profile
+
 class Image(models.Model):
     image = models.ImageField(upload_to = 'images/', default='Image')
     image_name = models.CharField(max_length = 50)
     image_caption = HTMLField()
     likes = models.BooleanField(default=False)
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
+
+    def save_image(self):
+        self.save()
+    
+    @classmethod
+    def update_caption(cls, update):
+        pass
+    
+    @classmethod
+    def get_image_id(cls, id):
+        image = Image.objects.get(pk=id)
+        return image
+    
+    @classmethod
+    def get_images_followers(cls, profile):
+        images = Image.objects.filter(profile__pk = profile)
+        return images
+    
+    @classmethod
+    def get_all_images(cls):
+        images = Images.objects.all()
+        return images
+    
+    def __str__(self):
+        return self.image_name
