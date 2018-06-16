@@ -3,27 +3,28 @@
 
 {% block content %}
 <div class="container">
-    <div class="row">
-        <div class="col-md-4"></div>
+    <div class="row sign-up">
         <div class="col-md-4">
             {% if form.errors %}
-            <p>Password or Username is incorrect</p>
+            <p class="small">Password or Username is incorrect</p>
             {% endif %}
-            <div class="panel-heading">
-                <h3 class="text-center">Sign in</h3>
+            <div class="section">
+                <h1>Instagram</h1>
+                <div class="form-section">
+                    <form action="/accounts/login/" method="POST">
+                        {% csrf_token %}
+                        {% bootstrap_form form %}
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-primary btn-sm" value="Sign In">
+                        </div>
+                        <input type="hidden" name="next" value="{{next}}">
+                    </form>
+                </div>
             </div>
-            <div class="panel-body">
-                <form action="/accounts/login/" method="POST">
-                    {% csrf_token %}
-                    {% bootstrap_form form %}
-                    <div class="form-group">
-                        <input type="submit" class="btn btn-primary btn-sm" value="Sign In">
-                    </div>
-                    <input type="hidden" name="next" value="{{next}}">
-                </form>
+            <div class="section">
+                <p>Don't have an account? <a href="/">Sign-Up</a></p>
             </div>
         </div>
-        <div class="col-md-4"></div>
     </div>
 </div>
 {% endblock %}
