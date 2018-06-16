@@ -13,7 +13,7 @@
                     {% endif %}
                 </div>
                 <div class="col-md-7">
-                    <p><span class="username">{{ profile.username }}</span> <a class="btn btn-edit" href="">Edit Profile</a> <a href=""><i class="fa fa-cog fa-2x"></i></a></p>
+                    <p><span class="username">{{ profile.username }}</span> <a class="btn btn-edit" href="{% url 'edit_profile' %}">Edit Profile</a> <a href=""><i class="fa fa-cog fa-2x"></i></a></p>
                     {% if profile.username == user.username %}
                     <p><a href="{% url 'upload_image' %}">Add Image</a></p>
                     {% endif %}

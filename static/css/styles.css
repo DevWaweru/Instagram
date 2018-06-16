@@ -5,9 +5,9 @@ body {
 /* Navbar styling */
 
 #navMain {
-    font-family: 'Questrial';
+    font-family: 'Raleway';
     font-size: 20px;
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
     background: #222;
 }
 
@@ -80,35 +80,53 @@ body {
     padding-top: 1rem;
     padding-bottom: 3rem;
 }
-.top-section img{
+
+.top-section img {
     width: 10rem;
     height: 10rem;
 }
-.profile-image{
+
+.profile-image {
     display: flex;
     justify-content: center;
 }
 
-.user-images img{
+.user-images img {
     width: 100%;
     /* height: inherit; */
 }
-.images{
+
+.images {
     padding-top: 15px;
     padding-bottom: 15px;
     height: 33.3%;
     overflow: hidden;
 }
-.username{
+
+.username {
     font-family: 'Raleway';
     font-size: 35px;
 }
-.btn-edit{
+
+.btn-edit {
     color: rgb(0, 0, 0);
     background-color: #ebebeb;
     border-color: #000000;
     margin-bottom: 5px;
 }
-.fa{
+
+.fa {
     color: black;
+}
+
+.edit-profile {
+    background-color: #fff;
+    border: 1px solid #e6e6e6;
+    border-radius: 1px;
+    margin: 0 0 10px;
+    padding: 10px 0;
+}
+
+.edit-areas{
+    border-right: 1px solid #e6e6e6;
 }

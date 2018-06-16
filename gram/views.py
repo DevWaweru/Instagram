@@ -76,3 +76,8 @@ def upload_image(request):
         form = ImageForm()
     
     return render(request, 'profile/upload_image.html', {'form':form})
+
+@login_required(login_url='/accounts/login')
+def edit_profile(request):
+    
+    return render(request, 'profile/edit_profile.html')
