@@ -5,7 +5,7 @@
         <div class="col-md-8">
             <h1>Instagram Clone</h1>
             {% if user.is_authenticated %}
-            <h2>You have been logged in {{user|title}} </h2>
+            <h2>You have been logged in <a href="{% url 'profile' username=user %}">{{user}}</a> </h2>
             {% else %}
             <h2>You have been logged out</h2>
             {% endif %}
