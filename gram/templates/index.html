@@ -15,7 +15,7 @@
         <div class="col-md-7">
         {% for img in images %}
         <div class="home-images">
-            <p> {{img.profile.username}} </p>
+            <p> <a href="{% url 'profile' username=img.profile.username %}">{{img.profile.username}}</a> </p>
             <img src="{{img.image_pic.url}}" alt="Image">
             <p> {{img.image_caption}} </p>
         </div>

@@ -68,11 +68,47 @@ body {
 
 .home-images img {
     width: 100%;
+    border-top: 1px solid #e6e6e6;
+    border-bottom: 1px solid #e6e6e6;
 }
 
-.top{
-    padding-top: 5rem;
+.top {
+    padding-top: 6rem;
 }
-.app-name{
-    padding-top: -1rem;
+
+.top-section {
+    padding-top: 1rem;
+    padding-bottom: 3rem;
+}
+.top-section img{
+    width: 10rem;
+    height: 10rem;
+}
+.profile-image{
+    display: flex;
+    justify-content: center;
+}
+
+.user-images img{
+    width: 100%;
+    /* height: inherit; */
+}
+.images{
+    padding-top: 15px;
+    padding-bottom: 15px;
+    height: 33.3%;
+    overflow: hidden;
+}
+.username{
+    font-family: 'Raleway';
+    font-size: 35px;
+}
+.btn-edit{
+    color: rgb(0, 0, 0);
+    background-color: #ebebeb;
+    border-color: #000000;
+    margin-bottom: 5px;
+}
+.fa{
+    color: black;
 }

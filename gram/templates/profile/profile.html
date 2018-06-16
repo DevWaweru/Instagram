@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="container">
+<div class="container top">
     <div class="row">
         <div class="col-md-12">
-            <div class="row">
-                <div class="col-md-5">
+            <div class="row top-section">
+                <div class="col-md-5 profile-image">
                     {% if profile_details.profile_photo %}
                     <img src="{{profile_details.profile_photo.url}}" alt="profile-photo">
                     {% else %}
@@ -13,15 +13,18 @@
                     {% endif %}
                 </div>
                 <div class="col-md-7">
-                    <p>{{ profile.username }}'s profile</p>
+                    <p><span class="username">{{ profile.username }}</span> <a class="btn btn-edit" href="">Edit Profile</a> <a href=""><i class="fa fa-cog fa-2x"></i></a></p>
+                    {% if profile.username == user.username %}
                     <p><a href="{% url 'upload_image' %}">Add Image</a></p>
+                    {% endif %}
                 </div>
             </div>
         </div>
     </div>
-    <div class="row">
+    <hr>
+    <div class="row user-images">
         {% for img in images %}
-        <div class="col-md-2">
+        <div class="col-md-4 images">
             <img src="{{img.image_pic.url}}" alt="Image">
             <p> {{img.image_caption}} </p>
         </div>
