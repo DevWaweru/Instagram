@@ -91,6 +91,10 @@ body {
     justify-content: center;
 }
 
+.profile-image img{
+    border-radius: 10rem;
+}
+
 .user-images img {
     width: 100%;
     /* height: inherit; */

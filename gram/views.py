@@ -7,7 +7,7 @@ from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.template.loader import render_to_string
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
-from .forms import SignupForm, ImageForm
+from .forms import SignupForm, ImageForm, ProfileForm
 from .emails import send_activation_email
 from .tokens import account_activation_token
 from .models import Image, Profile
@@ -56,7 +56,7 @@ def activate(request, uidb64, token):
 def profile(request, username):
     profile = User.objects.get(username=username)
     # print(profile.id)
-    profile_details = Profile.get_by_id(2)
+    profile_details = Profile.get_by_id(profile.id)
     images = Image.get_profile_images(profile.id)
     title = f'@{profile.username} Instagram photos and videos'
 
@@ -79,5 +79,14 @@ def upload_image(request):
 
 @login_required(login_url='/accounts/login')
 def edit_profile(request):
-    
-    return render(request, 'profile/edit_profile.html')
+    if request.method == 'POST':
+        form = ProfileForm(request.POST, request.FILES)
+        if form.is_valid():
+            edit = form.save(commit=False)
+            edit.user = request.user
+            edit.save()
+            return redirect('edit_profile')
+    else:
+        form = ProfileForm
+
+    return render(request, 'profile/edit_profile.html', {'form':form})

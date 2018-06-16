@@ -17,6 +17,7 @@
                     {% if profile.username == user.username %}
                     <p><a href="{% url 'upload_image' %}">Add Image</a></p>
                     {% endif %}
+                    <p>{{profile_details.bio}}</p>
                 </div>
             </div>
         </div>
