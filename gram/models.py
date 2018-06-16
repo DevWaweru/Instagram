@@ -22,11 +22,12 @@ class Profile(models.Model):
         return profile
 
 class Image(models.Model):
-    image = models.ImageField(upload_to = 'images/', default='Image')
+    image_pic = models.ImageField(upload_to = 'p/', default='Image')
     image_name = models.CharField(max_length = 50)
     image_caption = HTMLField()
+    post_date = models.DateTimeField(auto_now=True)
     likes = models.BooleanField(default=False)
-    profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    profile = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def save_image(self):
         self.save()
@@ -47,7 +48,7 @@ class Image(models.Model):
     
     @classmethod
     def get_all_images(cls):
-        images = Images.objects.all()
+        images = Image.objects.all()
         return images
     
     def __str__(self):

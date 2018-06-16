@@ -15,7 +15,7 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -55,7 +55,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'django.template.context_processors.media'
+                'django.template.context_processors.media',
             ],
         },
     },
@@ -63,7 +63,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'instagram.wsgi.application'
 LOGIN_REDIRECT_URL = '/home'
-AUTH_PROFILE_MODULE = 'accounts.UserProfile'
+# AUTH_PROFILE_MODULE = 'accounts.UserProfile'
 
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases

@@ -7,7 +7,7 @@ from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.template.loader import render_to_string
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
-from .forms import SignupForm
+from .forms import SignupForm, ImageForm
 from .emails import send_activation_email
 from .tokens import account_activation_token
 from .models import Image, Profile
@@ -15,7 +15,9 @@ from .models import Image, Profile
 # Create your views here.
 @login_required(login_url='/')
 def home(request):
-    return render(request, 'index.html')
+    images = Image.get_all_images()
+
+    return render(request, 'index.html', {'images':images})
 
 def signup(request):
     if request.user.is_authenticated():
@@ -53,9 +55,24 @@ def activate(request, uidb64, token):
     
 def profile(request, username):
     profile = User.objects.get(username=username)
-    print(profile.id)
+    # print(profile.id)
     profile_details = Profile.get_by_id(2)
     images = Image.get_profile_images(profile.id)
     title = f'@{profile.username} Instagram photos and videos'
 
     return render(request, 'profile/profile.html', {'title':title, 'profile':profile, 'profile_details':profile_details, 'images':images})
+
+@login_required(login_url='/accounts/login')
+def upload_image(request):
+    if request.method == 'POST':
+        form = ImageForm(request.POST, request.FILES)
+        if form.is_valid():
+            upload = form.save(commit=False)
+            upload.profile = request.user
+            # print(f'image is {upload.image}')
+            upload.save()
+            return redirect('profile', username=request.user)
+    else:
+        form = ImageForm()
+    
+    return render(request, 'profile/upload_image.html', {'form':form})

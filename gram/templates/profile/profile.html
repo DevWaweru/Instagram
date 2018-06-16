@@ -14,9 +14,22 @@
                 </div>
                 <div class="col-md-7">
                     <p>{{ profile.username }}'s profile</p>
+                    <p><a href="{% url 'upload_image' %}">Add Image</a></p>
                 </div>
             </div>
         </div>
+    </div>
+    <div class="row">
+        {% for img in images %}
+        <div class="col-md-2">
+            <img src="{{img.image_pic.url}}" alt="Image">
+            <p> {{img.image_caption}} </p>
+        </div>
+        {% empty %}
+        <div class="col-md-12">
+            <h2>Upload images</h2>
+        </div>
+        {% endfor %}
     </div>
 </div>
 {% endblock %}

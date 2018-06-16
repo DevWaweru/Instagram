@@ -11,5 +11,15 @@
             {% endif %}
         </div>
     </div>
+    <div class="row">
+        <div class="col-md-7">
+        {% for img in images %}
+            <img src="{{img.image_pic.url}}" alt="Image">
+            <p> {{img.image_caption}} </p>
+        {% empty %}
+            <h2>No images. Follow some people to see their images</h2>
+        {% endfor %}
+        </div>
+    </div>
 </div>
 {% endblock %}
