@@ -1,3 +1,78 @@
-body{
+body {
     background-color: #fafafa;
+}
+
+/* Navbar styling */
+
+#navMain {
+    font-family: 'Questrial';
+    font-size: 20px;
+    text-transform: uppercase;
+    background: #222;
+}
+
+#navMain .navbar-toggler {
+    font-size: 16px;
+    padding: 11px;
+    color: rgb(0, 0, 0);
+}
+
+#navMain a {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+}
+
+#navMain .navbar-nav .nav-item:active,
+#navMain .navbar-nav .nav-item:focus {
+    outline: none;
+    background-color: rgb(240, 120, 120);
+}
+
+@media (min-width: 992px) {
+    #navMain {
+        padding-top: 20px;
+        padding-bottom: 20px;
+        -webkit-transition: padding-top 0.5s ease-in-out, padding-bottom 0.5s;
+        -moz-transition: padding-top 0.5s ease-in-out, padding-bottom 0.5s;
+        transition: padding-top 0.5s ease-in-out, padding-bottom 0.5s;
+        letter-spacing: 1px;
+        background: rgb(255, 255, 255);
+        border-bottom: 1px solid #e6e6e6;
+        /* height: 70px; */
+    }
+    #navMain .nav-link.active {
+        outline: none;
+        background-color: rgb(255, 255, 255);
+    }
+    #navMain .nav-link.active:hover {
+        color: white;
+        background-color: rgba(230, 210, 97, 0.637)
+    }
+    #navMain.navbar-shrink {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        background: rgb(255, 255, 255);
+        border-bottom: 1px solid #e6e6e6;
+    }
+    #navMain.navbar-shrink a {
+        color: rgba(0, 0, 0, 0.973);
+    }
+}
+
+.home-images {
+    background-color: #fff;
+    border: 1px solid #e6e6e6;
+    border-radius: 1px;
+    margin: 0 0 10px;
+}
+
+.home-images img {
+    width: 100%;
+}
+
+.top{
+    padding-top: 5rem;
+}
+.app-name{
+    padding-top: -1rem;
 }
