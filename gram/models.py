@@ -6,7 +6,7 @@ from tinymce.models import HTMLField
 class Profile(models.Model):
     profile_photo = models.ImageField(upload_to = 'profilepics/', default='Image')
     bio = HTMLField()
-    user = models.OneToOneField(User,on_delete=models.CASCADE)
+    user = models.OneToOneField(User,on_delete=models.CASCADE, primary_key=True)
 
     def save_profile(self):
         self.save()
