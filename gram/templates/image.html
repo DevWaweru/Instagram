@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load bootstrap4 %}
 
 {% block content %}
 <div class="container top">
@@ -22,6 +23,34 @@
                         <p>{{image.image_caption}} </p>
                     </li>
                 </ul>
+                <p class="home-list"> {{comments|length}} comments </p>
+                <hr>
+                <p class="home-list">Comments</p>
+                {% for comment in comments %}
+                <div class="row">
+                    <div class="col-md-10">
+                        <ul class="list-inline home-list">
+                            <li class="list-inline-item">
+                                <a href="{% url 'profile' username=comment.user.username %}">{{comment.user.username}}</a>
+                            </li>
+                            <li class="list-inline-item">
+                                <p>{{comment.comment}} </p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                {% empty %}
+                <div class="row">
+                    <div class="col-md-10">
+                        <h3>There are no comments</h3>
+                    </div>
+                </div>
+                {% endfor %}
+                <form action="{% url 'single_image' image_id=image.id %}" method="POST">
+                    {% csrf_token %}
+                    {% bootstrap_form form %}
+                    <input type="submit" class="btn btn-success" value="Update">
+                </form>
             </div>
         </div>
     </div>
