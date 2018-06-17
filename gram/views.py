@@ -93,3 +93,9 @@ def edit_profile(request):
         form = ProfileForm()
 
     return render(request, 'profile/edit_profile.html', {'form':form})
+
+@login_required(login_url='/accounts/login')
+def single_image(request, image_id):
+    image = Image.get_image_id(image_id)
+
+    return render(request, 'image.html', {'image':image})

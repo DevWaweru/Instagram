@@ -9,7 +9,8 @@ urlpatterns = [
     url(r'^activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$', views.activate, name='activate'),
     url(r'^user/(?P<username>\w+)', views.profile, name='profile'),
     url(r'^upload/$', views.upload_image, name='upload_image'),
-    url(r'^accounts/edit/',views.edit_profile, name='edit_profile')
+    url(r'^accounts/edit/',views.edit_profile, name='edit_profile'),
+    url(r'^image/(?P<image_id>\d+)', views.single_image, name='single_image')
 ]
 
 if settings.DEBUG:

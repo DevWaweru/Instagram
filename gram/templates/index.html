@@ -1,17 +1,36 @@
 {% extends 'base.html' %} 
+
 {% block content %}
 <div class="container top">
     <div class="row">
         <div class="col-md-7">
-        {% for img in images %}
-        <div class="home-images">
-            <p> <a href="{% url 'profile' username=img.profile.username %}">{{img.profile.username}}</a> </p>
-            <img src="{{img.image_pic.url}}" alt="Image">
-            <p> {{img.image_caption}} </p>
-        </div>
-        {% empty %}
+            {% for img in images %}
+            <div class="home-images">
+                <p class="home-text">
+                    <a href="{% url 'profile' username=img.profile.username %}">{{img.profile.username}}</a>
+                </p>
+                <img src="{{img.image_pic.url}}" alt="Image">
+                <ul class="list-inline home-text">
+                    <li class="list-inline-item">
+                        <i class="fa fa-heart-o fa-2x" aria-hidden="true"></i>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="{% url 'single_image' image_id=img.id %}"><i class="fa fa-comment-o fa-2x" aria-hidden="true"></i></a>
+                    </li>
+                </ul>
+                <ul class="list-inline home-list">
+                    <li class="list-inline-item">
+                        <a href="{% url 'profile' username=img.profile.username %}">{{img.profile.username}}</a>
+                    </li>
+                    <li class="list-inline-item">
+                        <p>{{img.image_caption}} </p>
+                    </li>
+                </ul>
+                
+            </div>
+            {% empty %}
             <h2>No images. Follow some people to see their images</h2>
-        {% endfor %}
+            {% endfor %}
         </div>
     </div>
 </div>

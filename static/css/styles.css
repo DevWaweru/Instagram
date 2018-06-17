@@ -154,3 +154,11 @@ a:hover{
 .modal-body a:hover{
     text-decoration: none;
 }
+
+.home-text{
+    padding-left: 1rem;
+    padding-top: 1rem;
+}
+.home-list{
+    padding-left: 1rem;
+}
