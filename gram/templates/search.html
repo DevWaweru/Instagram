@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container top">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h2>Search results for {{message}}</h2>
+        </div>
+    </div>
+    <div class="row">
+        {% for profile in profiles %}
+        <div class="col-md-3 home-images search-results">
+            <img src="{{profile.profile_photo.url}}" alt="Profile pic">
+            <p class="username">{{profile.user.username}} </p>
+            <p><a class="btn btn-primary" href="{% url 'profile' username=profile.user.username %}">View Profile</a></p>
+        </div>
+        {% empty %}
+        <div class="col-md-12">
+            <h4>{{message}} </h4>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

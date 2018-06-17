@@ -13,7 +13,7 @@ class Profile(models.Model):
     
     @classmethod
     def search_profile(cls, name):
-        profile = Profile.objects.filter(user__icontains = name)
+        profile = Profile.objects.filter(user__username__icontains = name)
         return profile
     
     @classmethod

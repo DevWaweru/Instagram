@@ -58,10 +58,17 @@ body {
         color: rgba(0, 0, 0, 0.973);
     }
 }
-a:hover{
-    text-decoration: none;
-    cursor: pointer;    
+
+.nav-search {
+    display: flex;
+    justify-content: center;
 }
+
+a:hover {
+    text-decoration: none;
+    cursor: pointer;
+}
+
 .home-images {
     background-color: #fff;
     border: 1px solid #e6e6e6;
@@ -146,19 +153,30 @@ a:hover{
     padding: 0;
 }
 
-.modal-body a{
+.modal-body a {
     cursor: pointer;
     color: black;
 }
 
-.modal-body a:hover{
+.modal-body a:hover {
     text-decoration: none;
 }
 
-.home-text{
+.home-text {
     padding-left: 1rem;
     padding-top: 1rem;
 }
-.home-list{
+
+.home-list {
     padding-left: 1rem;
+}
+.search-results{
+    text-align: center;
+    padding-bottom: 1rem;
+}
+.search-results img{
+    width: 180px;
+    height: 180px;
+    border-radius: 20rem;
+    margin: 2rem 0;
 }

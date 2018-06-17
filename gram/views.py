@@ -98,7 +98,7 @@ def edit_profile(request):
 def single_image(request, image_id):
     image = Image.get_image_id(image_id)
     comments = Comments.get_comments_by_images(image_id)
-    
+
     if request.method == 'POST':
         form = CommentForm(request.POST)
         if form.is_valid():
@@ -111,3 +111,14 @@ def single_image(request, image_id):
         form = CommentForm()
         
     return render(request, 'image.html', {'image':image, 'form':form, 'comments':comments})
+
+def search(request):
+    if 'search' in request.GET and request.GET['search']:
+        search_term = request.GET.get('search')
+        profiles = Profile.search_profile(search_term)
+        message = f'{search_term}'
+
+        return render(request, 'search.html',{'message':message, 'profiles':profiles})
+    else:
+        message = 'Enter term to search'
+        return render(request, 'search.html', {'message':message})
