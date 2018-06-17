@@ -4,7 +4,25 @@
 <div class="container top">
     <div class="row">
         <div class="col-md-7">
-            <img src="{{image.image_pic.url}}" alt="Image">
+            <div class="home-images">
+                <p class="home-text">
+                    <a href="{% url 'profile' username=image.profile.username %}">{{image.profile.username}}</a>
+                </p>
+                <img src="{{image.image_pic.url}}" alt="Image">
+                <ul class="list-inline home-text">
+                    <li class="list-inline-item">
+                        <i class="fa fa-heart-o fa-2x" aria-hidden="true"></i>
+                    </li>
+                </ul>
+                <ul class="list-inline home-list">
+                    <li class="list-inline-item">
+                        <a href="{% url 'profile' username=image.profile.username %}">{{image.profile.username}}</a>
+                    </li>
+                    <li class="list-inline-item">
+                        <p>{{image.image_caption}} </p>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 </div>
