@@ -16,7 +16,7 @@ from .models import Image, Profile
 @login_required(login_url='/')
 def home(request):
     images = Image.get_all_images()
-
+    
     return render(request, 'index.html', {'images':images})
 
 def signup(request):
@@ -56,7 +56,10 @@ def activate(request, uidb64, token):
 def profile(request, username):
     profile = User.objects.get(username=username)
     # print(profile.id)
-    profile_details = Profile.get_by_id(profile.id)
+    try:
+        profile_details = Profile.get_by_id(profile.id)
+    except:
+        profile_details = Profile.filter_by_id(profile.id)
     images = Image.get_profile_images(profile.id)
     title = f'@{profile.username} Instagram photos and videos'
 
@@ -87,6 +90,6 @@ def edit_profile(request):
             edit.save()
             return redirect('edit_profile')
     else:
-        form = ProfileForm
+        form = ProfileForm()
 
     return render(request, 'profile/edit_profile.html', {'form':form})

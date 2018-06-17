@@ -58,7 +58,10 @@ body {
         color: rgba(0, 0, 0, 0.973);
     }
 }
-
+a:hover{
+    text-decoration: none;
+    cursor: pointer;    
+}
 .home-images {
     background-color: #fff;
     border: 1px solid #e6e6e6;
@@ -91,7 +94,7 @@ body {
     justify-content: center;
 }
 
-.profile-image img{
+.profile-image img {
     border-radius: 10rem;
 }
 
@@ -131,6 +134,23 @@ body {
     padding: 10px 0;
 }
 
-.edit-areas{
+.edit-areas {
     border-right: 1px solid #e6e6e6;
+}
+
+.modal-dialog {
+    max-width: 300px;
+}
+
+.modal-body {
+    padding: 0;
+}
+
+.modal-body a{
+    cursor: pointer;
+    color: black;
+}
+
+.modal-body a:hover{
+    text-decoration: none;
 }

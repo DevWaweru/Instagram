@@ -13,11 +13,38 @@
                     {% endif %}
                 </div>
                 <div class="col-md-7">
-                    <p><span class="username">{{ profile.username }}</span> <a class="btn btn-edit" href="{% url 'edit_profile' %}">Edit Profile</a> <a href=""><i class="fa fa-cog fa-2x"></i></a></p>
+                    <ul class="list-inline">
+                        <li class="list-inline-item">
+                            <span class="username">{{ profile.username }}</span> 
+                        </li>
+                        {% if profile.username == user.username %}
+                        <li class="list-inline-item">
+                            <a class="btn btn-edit" href="{% url 'edit_profile' %}">Edit Profile</a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a data-toggle="modal" data-target="#settings"><i class="fa fa-cog fa-2x"></i></a>
+                        </li>
+                        {% else %}
+                        <li class="list-inline-item">
+                            <a href="#" class="btn btn-primary">Follow</a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                    <ul class="list-inline">
+                        <li class="list-inline-item">
+                            <span class="font-weight-bold">{{images|length}} </span> Posts
+                        </li>
+                        <li class="list-inline-item">
+                            <span class="font-weight-bold">0 </span> Folowers
+                        </li>
+                        <li class="list-inline-item">
+                            <span class="font-weight-bold">0 </span> Following
+                        </li>
+                    </ul>
+                    <p>{{profile_details.bio}}</p>
                     {% if profile.username == user.username %}
                     <p><a href="{% url 'upload_image' %}">Add Image</a></p>
                     {% endif %}
-                    <p>{{profile_details.bio}}</p>
                 </div>
             </div>
         </div>
@@ -35,5 +62,17 @@
         </div>
         {% endfor %}
     </div>
+</div>
+<div class="modal fade" id="settings" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-body"><ul class="list-group">
+            <li class="list-group-item text-center"><a href="{% url 'edit_profile' %}">Edit Profile</a></li>
+            <li class="list-group-item text-center"><a href="/logout/">Log Out</a></li>
+            <li class="list-group-item text-center"><a data-dismiss="modal">Cancel</a></li>
+          </ul>
+      </div>
+    </div>
+  </div>
 </div>
 {% endblock %}
