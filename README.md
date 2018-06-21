@@ -1,6 +1,6 @@
 # [Instagram](https://instugrum.herokuapp.com)
-## Web clone of the Instagram app
-### June 15th, 2018
+#### Web clone of the Instagram app
+#### June 15th, 2018
 #### By **[Richard Waweru](https://github.com/devwaweru)**
 
 ## Description
@@ -21,7 +21,7 @@ Find the specs [here](https://github.com/DevWaweru/Instagram/blob/master/SPECS.m
 
 ### Clone the Repo
 Run the following command on the terminal:
-`git clone https://github.com/DevWaweru/Zoom.git && cd Zoom`
+`git clone https://github.com/DevWaweru/Instagram.git && cd Instagram`
 
 ### Activate virtual environment
 Activate virtual environment using python3.6 as default handler
