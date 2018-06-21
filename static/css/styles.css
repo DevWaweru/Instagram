@@ -8,7 +8,7 @@ body {
     font-family: 'Raleway';
     font-size: 20px;
     /* text-transform: uppercase; */
-    background: #222;
+    background: rgb(255, 255, 255);
 }
 
 #navMain .navbar-toggler {

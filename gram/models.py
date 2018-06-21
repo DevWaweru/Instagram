@@ -1,10 +1,12 @@
 from django.db import models
 from django.contrib.auth.models import User
 from tinymce.models import HTMLField
+from pyuploadcare.dj.models import ImageField
 
 # Create your models here.
 class Profile(models.Model):
-    profile_photo = models.ImageField(upload_to = 'profilepics/', default='Image')
+    # profile_photo = models.ImageField(upload_to = 'profilepics/', default='Image')
+    prof_pic = ImageField(blank=True, manual_crop='800x800')
     bio = HTMLField()
     user = models.OneToOneField(User,on_delete=models.CASCADE, primary_key=True)
 
@@ -27,12 +29,16 @@ class Profile(models.Model):
         return profile
 
 class Image(models.Model):
-    image_pic = models.ImageField(upload_to = 'p/', default='Image')
+    # image_pic = models.ImageField(upload_to = 'p/', default='Image')
+    photo = ImageField(blank=True, manual_crop='800x800')
     image_name = models.CharField(max_length = 50)
     image_caption = HTMLField()
     post_date = models.DateTimeField(auto_now=True)
     likes = models.BooleanField(default=False)
     profile = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    class Meta:
+        ordering = ('-post_date',)
 
     def save_image(self):
         self.save()

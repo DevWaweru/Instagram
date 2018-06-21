@@ -17,9 +17,15 @@ DEBUG = config('DEBUG', default=False, cast=bool)
 
 ALLOWED_HOSTS = ['*']
 
+UPLOADCARE = {
+    'pub_key': config('pub_key'),
+    'secret': config('secret'),
+}
+
 # Application definition
 
 INSTALLED_APPS = [
+    'pyuploadcare.dj',
     'gram.apps.GramConfig',
     'tinymce',
     'bootstrap4',

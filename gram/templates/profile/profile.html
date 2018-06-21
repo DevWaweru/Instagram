@@ -1,13 +1,14 @@
 {% extends 'base.html' %}
 
 {% block content %}
+{{ form.media }}
 <div class="container top">
     <div class="row">
         <div class="col-md-12">
             <div class="row top-section">
                 <div class="col-md-5 profile-image">
-                    {% if profile_details.profile_photo %}
-                    <img src="{{profile_details.profile_photo.url}}" alt="profile-photo">
+                    {% if profile_details.prof_pic %}
+                    <img src="{{profile_details.prof_pic.cdn_url}}" alt="profile-photo">
                     {% else %}
                     <img src="/static/img/avatah.png" alt="avatar">
                     {% endif %}
@@ -53,8 +54,7 @@
     <div class="row user-images">
         {% for img in images %}
         <div class="col-md-4 images">
-            <img src="{{img.image_pic.url}}" alt="Image">
-            <p> {{img.image_caption}} </p>
+            <img src="{{img.photo.cdn_url}}" alt="Image">
         </div>
         {% empty %}
         <div class="col-md-12">

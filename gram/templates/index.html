@@ -9,7 +9,7 @@
                 <p class="home-text">
                     <a href="{% url 'profile' username=img.profile.username %}">{{img.profile.username}}</a>
                 </p>
-                <img src="{{img.image_pic.url}}" alt="Image">
+                <img src="{{img.photo.cdn_url}}" alt="Image">
                 <ul class="list-inline home-text">
                     <li class="list-inline-item">
                         <i class="fa fa-heart-o fa-2x" aria-hidden="true"></i>
