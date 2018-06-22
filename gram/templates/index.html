@@ -23,7 +23,9 @@
                         <a href="{% url 'profile' username=img.profile.username %}">{{img.profile.username}}</a>
                     </li>
                     <li class="list-inline-item">
-                        <p>{{img.image_caption}} </p>
+                    {% autoescape on %}
+                        <p>{{img.image_caption|safe}} </p>
+                    {% endautoescape %}
                     </li>
                 </ul>
                 

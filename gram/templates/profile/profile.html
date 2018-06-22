@@ -13,7 +13,7 @@
                     <img src="/static/img/avatah.png" alt="avatar">
                     {% endif %}
                 </div>
-                <div class="col-md-7">
+                <div class="col-md-5 text-center">
                     <ul class="list-inline">
                         <li class="list-inline-item">
                             <span class="username">{{ profile.username }}</span> 
@@ -42,7 +42,7 @@
                             <span class="font-weight-bold">0 </span> Following
                         </li>
                     </ul>
-                    <p>{{profile_details.bio}}</p>
+                    <p class="font3">{{profile_details.bio|safe}}</p>
                     {% if profile.username == user.username %}
                     <p><a href="{% url 'upload_image' %}">Add Image</a></p>
                     {% endif %}

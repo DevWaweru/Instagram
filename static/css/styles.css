@@ -111,8 +111,7 @@ a:hover {
 }
 
 .images {
-    padding-top: 15px;
-    padding-bottom: 15px;
+    padding: 5px;
     height: 33.3%;
     overflow: hidden;
 }
@@ -173,10 +172,20 @@ a:hover {
 .search-results{
     text-align: center;
     padding-bottom: 1rem;
+    margin: 1rem;
 }
 .search-results img{
     width: 180px;
     height: 180px;
     border-radius: 20rem;
     margin: 2rem 0;
+}
+p{
+    font-family: 'Montserrat'
+}
+.font1{
+    font-family: 'Catamaran';
+}
+.font2{
+    font-family: 'Julius Sans One';
 }

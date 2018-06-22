@@ -32,7 +32,7 @@ class Image(models.Model):
     # image_pic = models.ImageField(upload_to = 'p/', default='Image')
     photo = ImageField(blank=True, manual_crop='800x800')
     image_name = models.CharField(max_length = 50)
-    image_caption = HTMLField()
+    image_caption = HTMLField(blank=True)
     post_date = models.DateTimeField(auto_now=True)
     likes = models.BooleanField(default=False)
     profile = models.ForeignKey(User, on_delete=models.CASCADE)
