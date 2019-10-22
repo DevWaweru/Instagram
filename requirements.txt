@@ -9,7 +9,7 @@ django-registration==2.4.1
 django-tinymce==2.7.0
 gunicorn==19.8.1
 idna==2.7
-Pillow==5.1.0
+Pillow==6.2.0
 psycopg2==2.7.4
 psycopg2-binary==2.7.4
 python-dateutil==2.7.3
